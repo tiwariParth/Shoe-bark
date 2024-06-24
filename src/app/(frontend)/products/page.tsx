@@ -3,6 +3,7 @@ import db from "@/db/db";
 import { cache } from "@/lib/cache";
 import { Suspense } from "react";
 
+
 const getProducts = cache(() => {
   return db.product.findMany({
     where: { isAvailableForPurchase: true },
