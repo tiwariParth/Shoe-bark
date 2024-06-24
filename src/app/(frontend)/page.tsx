@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 const getMostPopularProducts = cache(
-  () => {
+  async () => {
     return db.product.findMany({
       where: { isAvailableForPurchase: true },
       orderBy: { orders: { _count: "desc" } },
@@ -19,7 +19,7 @@ const getMostPopularProducts = cache(
   { revalidate: 60 * 60 * 24 }
 );
 
-const getNewestProducts = cache(() => {
+const getNewestProducts = cache(async () => {
   return db.product.findMany({
     where: { isAvailableForPurchase: true },
     orderBy: { createdAt: "desc" },
@@ -59,7 +59,7 @@ function ProductGridSection({
           </Link>
         </Button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Suspense
           fallback={
             <>
