@@ -7,12 +7,15 @@ import { Component, ComponentProps } from "react";
 
 const Nav = ({ children }: { children: React.ReactNode }) => {
   return (
-    <nav className="bg-primary text-primary-foreground flex justify-between px-4 mx-auto">
+    <nav className="bg-primary text-primary-foreground flex justify-between px-4 mx-auto scroll-smooth">
       <div>
         <img
           src="/smart-kicks.png"
           alt="Smart-Kicks"
-          className="w-[4rem] h-[4rem] "
+          className="w-[4rem] h-[4rem] cursor-pointer"
+          onClick={() => {
+            window.location.href = "/admin";
+          }}
         />
       </div>
       <div className="flex justify-center">{children}</div>
