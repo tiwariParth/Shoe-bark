@@ -55,7 +55,7 @@ function ProductGridSection({
         <Button variant="outline" asChild>
           <Link href="/products" className="space-x-2">
             <span>View All</span>
-            <ArrowRight className="size-4 hover:translate-x-2 delay-100 transition-all" />
+            <ArrowRight className="size-4 " />
           </Link>
         </Button>
       </div>
