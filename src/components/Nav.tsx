@@ -7,18 +7,18 @@ import { Component, ComponentProps } from "react";
 
 const Nav = ({ children }: { children: React.ReactNode }) => {
   return (
-    <nav className="bg-primary text-primary-foreground flex justify-between px-4 mx-auto scroll-smooth">
+    <nav className=" text-black text-primary-foreground flex justify-between items-center px-4 scroll-smooth">
       <div>
         <img
           src="/smart-kicks.png"
           alt="Smart-Kicks"
           className="w-[4rem] h-[4rem] cursor-pointer"
           onClick={() => {
-            window.location.href = "/admin";
+            window.location.href = "/";
           }}
         />
       </div>
-      <div className="flex justify-center">{children}</div>
+      <div className="flex justify-center gap-2">{children}</div>
     </nav>
   );
 };
@@ -29,8 +29,9 @@ export function NavLink(props: Omit<ComponentProps<typeof Link>, "className">) {
     <Link
       {...props}
       className={cn(
-        "p-4 hover:bg-secondary transition-all delay-100 hover:text-secondary-foreground focus-visible:bg-secondary focus-visible:text-secondary-foreground",
-        pathName === props.href && "bg-background text-foreground"
+        "px-4 py-2 hover:bg-yellow-500 text-black  gap-3 rounded-md transition-all delay-100 hover:text-white hover:shadow-xl focus-visible:bg-secondary focus-visible:text-secondary-foreground",
+        pathName === props.href &&
+          "bg-background text-foreground border-b shadow-md"
       )}
     />
   );
