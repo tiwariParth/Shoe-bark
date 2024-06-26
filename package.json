@@ -21,7 +21,10 @@
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-email": "^2.1.4",
+    "resend": "^3.3.0",
     "stripe": "^15.12.0",
+    "stripe-cli": "^0.1.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
