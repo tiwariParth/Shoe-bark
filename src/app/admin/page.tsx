@@ -15,7 +15,6 @@ const getSalesData = async () => {
     },
     _count: true,
   });
-  await wait(2000)
 
   return {
     amount: (data._sum.pricePaidInCents || 0) / 100,
@@ -23,7 +22,6 @@ const getSalesData = async () => {
   };
 };
 
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 async function getUserData() {
   const [userCount, orderData] = await Promise.all([
     await db.user.count(),
