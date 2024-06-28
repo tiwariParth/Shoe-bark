@@ -39,6 +39,9 @@ export default function AdminProductsPage() {
 
 async function ProductsTable() {
   const products = await db.product.findMany({
+    where: {
+      addedByUser: true,
+    },
     select: {
       id: true,
       name: true,
@@ -48,7 +51,7 @@ async function ProductsTable() {
     },
     orderBy: { name: "asc" },
   });
-
+  console.log("Products:", products);
   if (products.length === 0) return <p>No products found</p>;
 
   return (

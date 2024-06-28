@@ -17,6 +17,7 @@ const addSchema = z.object({
   priceInCents: z.coerce.number().int().min(1),
   file: fileSchema.refine((file) => file.size > 0, "Required"),
   image: imageSchema.refine((file) => file.size > 0, "Required"),
+  addedByUser: z.boolean().default(false),
 });
 
 export async function addProduct(prevState: unknown, formData: FormData) {
@@ -38,16 +39,23 @@ export async function addProduct(prevState: unknown, formData: FormData) {
     Buffer.from(await data.image.arrayBuffer())
   );
 
-  await db.product.create({
-    data: {
-      isAvailableForPurchase: false,
-      name: data.name,
-      description: data.description,
-      priceInCents: data.priceInCents,
-      filePath,
-      imagePath,
-    },
-  });
+  try {
+    const createdProduct = await db.product.create({
+      data: {
+        isAvailableForPurchase: false,
+        name: data.name,
+        description: data.description,
+        priceInCents: data.priceInCents,
+        filePath,
+        imagePath,
+        addedByUser: true,
+      },
+    });
+
+    console.log("Created product:", createdProduct); // Log the created product to verify addedByUser field
+  } catch (error) {
+    console.error("Error creating product:", error);
+  }
 
   revalidatePath("/");
   revalidatePath("/products");
