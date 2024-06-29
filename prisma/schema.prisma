@@ -22,6 +22,7 @@ model Product {
   updatedAt DateTime @updatedAt
   orders Order[]
   downloadVerifications DownloadVerification[]
+  addedByUser Boolean @default(false)
 }
 
 model User {

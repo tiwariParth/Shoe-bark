@@ -12,7 +12,7 @@ const getMostPopularProducts = cache(
     return db.product.findMany({
       where: { isAvailableForPurchase: true },
       orderBy: { orders: { _count: "desc" } },
-      take: 6,
+      take: 4,
     });
   },
   ["/", "getMostPopularProducts"],
@@ -23,7 +23,7 @@ const getNewestProducts = cache(async () => {
   return db.product.findMany({
     where: { isAvailableForPurchase: true },
     orderBy: { createdAt: "desc" },
-    take: 6,
+    take: 4,
   });
 }, ["/", "getNewestProducts"]);
 
@@ -59,7 +59,7 @@ function ProductGridSection({
           </Link>
         </Button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
         <Suspense
           fallback={
             <>

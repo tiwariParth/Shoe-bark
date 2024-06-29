@@ -5,7 +5,7 @@ import { ProductForm } from "../_components/ProductForm";
 const NewProductPage = () => {
   return (
     <div>
-      <PageHeader>Add Product</PageHeader>
+      <PageHeader>Sell Your Product</PageHeader>
       <ProductForm />
     </div>
   );
